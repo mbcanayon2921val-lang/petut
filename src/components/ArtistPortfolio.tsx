@@ -80,8 +80,10 @@ function ArtworkGallery() {
     const onKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") setSelected(null);
       const index = artworks.findIndex((art) => art.id === selected.id);
-      if (event.key === "ArrowRight") setSelected(artworks[(index + 1) % artworks.length]);
-      if (event.key === "ArrowLeft") setSelected(artworks[(index - 1 + artworks.length) % artworks.length]);
+      const next = artworks[(index + 1) % artworks.length];
+      const previous = artworks[(index - 1 + artworks.length) % artworks.length];
+      if (event.key === "ArrowRight" && next) setSelected(next);
+      if (event.key === "ArrowLeft" && previous) setSelected(previous);
     };
     document.body.style.overflow = "hidden";
     window.addEventListener("keydown", onKey);
@@ -91,7 +93,8 @@ function ArtworkGallery() {
   const step = (amount: number) => {
     if (!selected) return;
     const index = artworks.findIndex((art) => art.id === selected.id);
-    setSelected(artworks[(index + amount + artworks.length) % artworks.length]);
+    const next = artworks[(index + amount + artworks.length) % artworks.length];
+    if (next) setSelected(next);
   };
 
   return (
