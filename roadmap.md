@@ -1,4 +1,4 @@
 # Roadmap
-- [ ] Add and organize supplied and generated artwork
-- [ ] Build the premium responsive portfolio experience
-- [ ] Verify desktop and mobile interactions
+- [x] Add and organize supplied artwork only
+- [x] Build the premium responsive portfolio experience
+- [x] Verify desktop and mobile interactions
